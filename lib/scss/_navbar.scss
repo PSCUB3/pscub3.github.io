@@ -1,0 +1,123 @@
+header {
+    width: 100%;
+    // height: 500px;
+}
+
+.navbar {
+    padding: 1rem;
+    background-color: rgba($color: #000, $alpha: 0) !important;
+    mix-blend-mode: difference;
+    z-index: 1050;
+
+    
+    + .offcanvas {
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000, $alpha: 0) !important;
+        backdrop-filter: blur(16px) saturate(200%);
+        
+        .nav-link {
+            font-size: 4rem;
+            font-family: $primary-font;
+            text-transform: uppercase;
+            visibility: hidden;
+        }
+
+        &.show {
+
+            .nav-link {
+                visibility: visible;
+                animation: linksEntry ease;
+                -webkit-animation: linksEntry ease;
+            }
+
+            &.hiding {
+                .nav-link {
+                    animation: .5s linksExit ease;
+                    -webkit-animation: .5s linksExit ease;
+                }
+    
+            }
+        }
+        
+
+    }
+
+    &-toggle {
+        background-color: rgba($color:#000, $alpha:0);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: .5rem 0;
+        border: 0;
+        height: 2rem;
+        width: 2rem;
+        box-shadow: 0px;
+        z-index: 1050;
+        outline: none;
+
+        .line {
+            display: block;
+            width: 2rem;
+            height: 2px;
+            background-color: #fff;
+            // margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        &.toggled {
+            padding: .85rem 0;
+            .line {
+                &:first-child {
+                    transform: translate(0, .5px) rotate(-45deg);
+                }
+                &:last-child {
+                    transform: translate(0, -.5px) rotate(45deg);
+                }
+            }
+        }
+
+    }
+}
+
+@keyframes linksEntry {
+    0% {
+        margin-left: -300px;
+        opacity: 0;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes linksEntry {
+    0% {
+        margin-left: -300px;
+        opacity: 0;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes linksExit {
+    0% {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        margin-bottom: -300px;
+        opacity: 0;
+    }
+}
+@-webkit-keyframes linksExit {
+    0% {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    100% {
+        margin-bottom: -300px;
+        opacity: 0;
+    }
+}

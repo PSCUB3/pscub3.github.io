@@ -1,0 +1,88 @@
+@import './vars';
+@import './imports';
+
+@import './bootstrap/bootstrap.scss';
+@import './navbar';
+
+.font-p {
+    font-family: $secondary-font;
+}
+
+.font-h {
+    font-family: $primary-font;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    &#intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // background: radial-gradient(ellipse at top, #090510, rgba($color: #24232F, $alpha: 0));
+        background: linear-gradient(180deg, #090510, rgba($color: #24232F, $alpha: 0));
+        background-color: #24232F;
+        color: #fff;
+        animation: 1s introThing ease;
+        
+        h1 {
+            // color: #BAB9CB;
+            font-weight: 300;
+            
+            + div {
+                color: #BAB9CB;
+                font-weight: 300;
+                letter-spacing: 2px;
+                font-size: $h6-font-size;
+            }
+        }
+    }
+    
+    &#about {
+        background: linear-gradient(0deg, #090510, rgba($color: #24232F, $alpha: 0));
+        background-color: #24232F;
+    }
+    
+    &#projects {
+        background-color: #090510;
+    }
+    
+    &#contact {
+        background: linear-gradient(180deg, #090510, rgba($color: #000411, $alpha: 0));
+        background-color: #000411;
+    }
+
+}
+
+.blob {
+
+    &-right, &-left {
+        background-color: rgba($color: #BFAFA6, $alpha: .5);
+        border: 1px solid #BFAFA6;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        backdrop-filter: blur(16px) saturate(200%);
+        transform: rotate(45deg);
+    }
+    
+    &-right {
+        right: 0;
+        // transform: translateY(-);
+    }
+
+    &-left {
+        left: 0;
+    }
+}
+
+footer {
+    min-height: 100vh;
+    background-color: #EFCB68;
+}
+
+
+// https://coolors.co/807ea0-d4d2d5-bfafa6-aa968a-6e6a6f
+// https://coolors.co/090510-efcb68-e1efe6-aeb7b3-000411
