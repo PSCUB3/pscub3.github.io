@@ -2,3 +2,14 @@
 
 $headings-font-family: $primary-font;
 $font-family-base: $secondary-font;
+
+$link-color: #000411;
+
+$input-bg: rgba($color: #fff, $alpha: 0.1);
+$input-focus-bg: $input-bg;
+$input-border-width: 0;
+$input-focus-box-shadow: 0 0 $focus-ring-blur $focus-ring-width rgba(#fff, $focus-ring-opacity);
+$input-border-radius: $border-radius;
+
+$input-padding-x: 1.75rem;
+$input-padding-y: 1.25rem;

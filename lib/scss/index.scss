@@ -4,6 +4,19 @@
 @import './bootstrap/bootstrap.scss';
 @import './navbar';
 
+@mixin social-card-color-theme($social-card-color: #fff, $card-text-color: #333) {
+    
+    color: $social-card-color;
+    // border: 2px solid rgba($color: #fff, $alpha: 0.1);
+    background-color: rgba($social-card-color, 0.1);
+    transition: .3s ease;
+    
+    &:hover, &:active {
+        color: $card-text-color;
+        background-color: $social-card-color;
+    }
+}
+
 .font-p {
     font-family: $secondary-font;
 }
@@ -16,6 +29,12 @@ section {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+    padding: 1rem;
+
+    h1 {
+        color: #fff;
+        margin: 1rem 0;
+    }
 
     &#intro {
         display: flex;
@@ -26,10 +45,16 @@ section {
         background-color: #24232F;
         color: #fff;
         animation: 1s introThing ease;
+        padding: 0;
         
         h1 {
             // color: #BAB9CB;
-            font-weight: 300;
+            font-weight: 500;
+            display: flex;
+
+            span {
+                animation: 1s introHeading ease;
+            }
             
             + div {
                 color: #BAB9CB;
@@ -43,6 +68,27 @@ section {
     &#about {
         background: linear-gradient(0deg, #090510, rgba($color: #24232F, $alpha: 0));
         background-color: #24232F;
+
+        .services {
+            display: flex;
+            text-align: center;
+
+            .card {
+                background-color: rgba($color: #000, $alpha: 0.1);
+                backdrop-filter: blur(16px);
+                border: 0;
+                color: #E1EFE6;
+                padding: 2rem;
+
+                i {
+                    font-size: 6rem;
+                }
+
+                p {
+                    color: #AEB7B3;
+                }
+            }
+        }
     }
     
     &#projects {
@@ -52,6 +98,133 @@ section {
     &#contact {
         background: linear-gradient(180deg, #090510, rgba($color: #000411, $alpha: 0));
         background-color: #000411;
+
+        form {
+            color: #fff;
+            padding: 1rem;
+
+            label {
+                font-weight: 500;
+                font-family: $primary-font;
+            }
+
+            .form-control {
+                color: #fff
+            }
+
+            textarea {
+                resize: none;
+            }
+
+            .form-text {
+                color: tint-color(#090510, 80%);
+            }
+        }
+
+        .mail-heading {
+            color: tint-color(#090510, 60%)   
+        }
+
+        .table-responsive {
+            background-color: rgba($color: #fff, $alpha: 0.5);
+            backdrop-filter: blur(16px) saturate(200%);
+            padding: 1rem;
+            border-radius: $border-radius;
+
+            table {
+                margin: 0;
+
+                th {
+                    font-family: $primary-font;
+                    text-align: right;
+                }
+
+                caption {
+                    color: #fff;
+                }
+    
+                * {
+                    background-color: rgba($color: #000, $alpha: 0);
+                    border: 0;
+                }
+            }
+        }
+
+        .socials {
+            .card {
+                position: relative;
+                margin: {
+                    bottom: 1rem;
+                }
+                padding: 1rem;
+                border-radius: $border-radius;
+                // max-width: 300px;
+                width: 100%;
+                min-height: 100px;
+                height: auto;
+                font-weight: 500 !important;
+
+                h6 {
+                    letter-spacing: 1px;
+                }
+                
+                @include social-card-color-theme;
+                
+                .icon {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                }
+                
+                &.github {
+                    @include social-card-color-theme(#000, #fff);
+                    color: #fff
+                }
+                
+                &.linkedin {
+                    @include social-card-color-theme(#1166c2, #fff);
+                }
+                
+                &.twitter {
+                    @include social-card-color-theme(#1d9bf0, #fff);
+                }
+                
+                &.stackoverflow {
+                    @include social-card-color-theme(#f48024, #fff);
+                }
+                
+                &.youtube {
+                    @include social-card-color-theme(#ff2e2e, #fff);
+                }
+            
+                &.telegram {
+                    @include social-card-color-theme(#24A1DE, #fff);
+                }
+                
+                
+                .row {
+                    height: 100%;
+                    
+                    svg {
+                        width: 80%;
+                        height: auto;
+                    }
+                    
+                    .col:not(.icon) {
+                        display: flex;
+                        align-content: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        
+                        a {
+                            color: inherit !important;
+                            word-break: break-all;
+                        }
+                    }
+                }
+                
+            }
+        }
     }
 
 }
@@ -78,11 +251,98 @@ section {
     }
 }
 
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+    .card {
+        width: 40% !important;
+        margin: .5rem;
+        border: 0;
+        border-radius: $border-radius;
+        padding: 1rem;
+        background-color: rgba($color: #DCD0F0, $alpha: 0.75);
+        backdrop-filter: blur(16px) saturate(200%);
+
+        @include media-breakpoint-down(md) {
+            & {
+                width: 100% !important;
+                margin: .5rem 1rem;
+            }
+        }
+
+        h4 {
+            color: #090510;
+        }
+
+        .content {
+
+            .hover-me {
+                animation: 2s blink ease infinite;
+                text-align: center;
+                padding: 1rem;
+                font-size: $h5-font-size;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 40%;
+
+                + p {
+                    visibility: hidden;
+                }
+            }
+        }
+
+        &:hover {
+            .hover-me {
+                visibility: hidden;
+
+                + p {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.form-control {
+    backdrop-filter: blur(16px) saturate(200%);
+}
+
 footer {
     min-height: 100vh;
     background-color: #EFCB68;
+    padding: 6rem;
+
+    @include media-breakpoint-down(md) {
+        & {
+            padding: 1rem;
+        }
+    }
+
 }
 
+@keyframes blink {
+    0% {opacity: 0.5;}
+    50% {opacity: 0.1;}
+    100% {opacity: 0.5;}
+}
+
+@keyframes introHeading {
+    0% {
+        margin-right: -100px;
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    100% {
+        margin-right: 0;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 // https://coolors.co/807ea0-d4d2d5-bfafa6-aa968a-6e6a6f
 // https://coolors.co/090510-efcb68-e1efe6-aeb7b3-000411
